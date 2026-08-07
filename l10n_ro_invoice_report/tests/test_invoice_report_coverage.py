@@ -156,7 +156,7 @@ class TestL10nRoInvoiceReportCoverage(TransactionCase):
 
         currency = invoice.currency_id
         text = report._amount_to_text(100.0, currency)
-        self.assertIn("One Hundred", text)  # English default likely
+        self.assertEqual(text, currency.amount_to_text(100.0))
 
         # _get_pickings
         report._get_pickings(invoice)
